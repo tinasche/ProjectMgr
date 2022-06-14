@@ -1,0 +1,36 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: white;
+}
+
+.about-heading:hover {
+  color: chocolate;
+  text-decoration: underline darkkhaki solid 2px;
+}
+
+.about-section {
+  margin-bottom: 2rem;
+}
+
+.projectTitle {
+  color: darkslategrey;
+}
+
+.projectTitle:hover {
+  color: chocolate;
+}

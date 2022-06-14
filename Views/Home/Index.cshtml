@@ -1,0 +1,26 @@
+﻿@model List<ProjectMgr.Models.Project>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="top">
+    <div class="p-5 mb-4 bg-dark rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold text-center text-white" id="top-callout">Project Register</h1>
+        <a class="btn btn-outline-dark">Create New Project</a>
+      </div>
+    </div>
+</div>
+
+<div class="row gap-3">
+@foreach (Project projectItem in Model)
+{
+    <div class="card shadow-sm" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title projectTitle">@projectItem.ProjectName</h5>
+            <p class="card-text">@projectItem.Description</p>
+            <a  class="card-link btn btn-dark" asp-controller="Projects" asp-action="Index" asp-route-id="@projectItem.Id">Explore</a>
+        </div>
+    </div>
+}
+</div>
