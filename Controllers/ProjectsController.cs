@@ -7,17 +7,19 @@ namespace ProjectMgr.Controllers;
 public class ProjectsController : Controller
 {
     private readonly IProjectService _service;
+    public int projectId { get; set; } = default;
 
     public ProjectsController(IProjectService service)
     {
         _service = service;
     }
 
-    public IActionResult Index([FromQuery]int id)
+    public IActionResult Index(int id)
     {
         var selectedProject = _service.GetProjectById(id);
         return View(selectedProject);
     }
+
     public IActionResult Initiation()
     {
         return View();
@@ -26,6 +28,7 @@ public class ProjectsController : Controller
     {
         return View();
     }
+    
     public IActionResult Executing()
     {
         return View();
