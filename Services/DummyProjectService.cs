@@ -1,9 +1,8 @@
-using ProjectMgr.Interfaces;
 using ProjectMgr.Models;
 
 namespace ProjectMgr.Services
 {
-    public class DummyProjectService : IProjectService
+    public class DummyProjectService
     {
         public List<Project> myProjects = new() {
         new Project {Id = 1, ProjectName="ProjectMgr", Description="Project Management tool for small projects/teams. Based on PMIs process groups.", Owner="Tinashe Chitakunye", StartedOn=DateTime.Parse("2021-12-13"), ClosedOn=DateTime.Parse("2022-02-01")},
@@ -13,12 +12,12 @@ namespace ProjectMgr.Services
         new Project {Id = 5, ProjectName="Gadza", Description="News Recommendation System for subscribers based on their view choices.", Owner="Richard Dzingai", StartedOn=DateTime.Parse("2021-12-13"), ClosedOn=DateTime.Parse("2022-03-03")}
     };
 
-        public IEnumerable<Project> GetAllProjects()
+        public IEnumerable<Project> GetProjects()
         {
             return myProjects;
         }
 
-        public Project GetProjectById(int id)
+        public Project GetProject(int id)
         {
             return myProjects.FirstOrDefault(p => p.Id == id) ?? null;
         }

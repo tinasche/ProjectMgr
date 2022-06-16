@@ -1,10 +1,11 @@
-﻿@{
+﻿@model IEnumerable<ProjectMgr.Models.Stakeholder>
+@{
     ViewData["Title"] = "Initiation";
 }
 
 <ul class="nav nav-tabs bg-dark">
   <li class="nav-item">
-    <a class="nav-link text-white" asp-action="Index">Introduction</a>
+    <a class="nav-link text-white disabled" asp-action="Index">Introduction</a>
   </li>
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" asp-action="Initiation">Initiation</a>
@@ -23,4 +24,46 @@
   </li>
 </ul>
 
-<p>The Initiation Page</p>
+@* Project Charter and Stakeholder Register sections
+Project Charter to include: Objectives, Scope, Business case, Time and Cost estimates, Milestones, and Major deliverables.
+Stakeholder Register to include a table? of stakeholders with their information *@
+
+<section class="pt-2">
+  <h4 class="projectTitle">Project Charter</h4>
+  <h5>Objectives</h5>
+  <h5>Scope</h5>
+  <h5>Business Case</h5>
+  <h5>Time and cost Estimates</h5>
+  <h5>Milestones</h5>
+  <h5>Major Deliverables</h5>
+</section>
+<section class="pt-2">
+  <h4 class="projectTitle">Stakeholder Register</h4>
+  <table class="table table-hover">
+    <thead class="bg-dark text-light">
+      <th>@Html.DisplayNameFor(model => model.Name)</th>
+      <th>@Html.DisplayNameFor(model => model.Role)</th>
+      <th>@Html.DisplayNameFor(model => model.Function)</th>
+      <th>@Html.DisplayNameFor(model => model.Email)</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      @foreach (Stakeholder stakeholder in Model)
+      {
+      <tr>
+        <td>@stakeholder.Name</td>
+        <td>@stakeholder.Role</td>
+        <td>@stakeholder.Function</td>
+        <td>@stakeholder.Email</td>
+        @* RESEARCH: Separate controller for managing stakeholders? *@
+        <td>
+          <a asp-controller="Stakeholders" asp-action="Edit" asp-route-id="@stakeholder.Id" style="text-decoration: none;">Edit</a> |
+          <a asp-controller="Stakeholders" asp-action="Details" asp-route-id="@stakeholder.Id" style="text-decoration: none;">Details</a> |
+          <a asp-controller="Stakeholders" asp-action="Details" asp-route-id="@stakeholder.Id" style="text-decoration: none;">Delete</a>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</section>
+      

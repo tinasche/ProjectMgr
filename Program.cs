@@ -1,11 +1,12 @@
-using ProjectMgr.Interfaces;
 using ProjectMgr.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IProjectService, DummyProjectService>();
+// Register my dependent services
+builder.Services.AddTransient<DummyProjectService>();
+builder.Services.AddTransient<DummyStakeholderService>();
 
 var app = builder.Build();
 

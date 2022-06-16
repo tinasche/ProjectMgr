@@ -1,28 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
-using ProjectMgr.Interfaces;
+using ProjectMgr.Services;
 
 namespace ProjectMgr.Controllers;
 
 
 public class ProjectsController : Controller
 {
-    private readonly IProjectService _service;
+    private readonly DummyProjectService _projectService;
+    private readonly DummyStakeholderService _stakeholderService;
+
     public int projectId { get; set; } = default;
 
-    public ProjectsController(IProjectService service)
+    public ProjectsController(DummyProjectService projectService, DummyStakeholderService stakeholderService)
     {
-        _service = service;
+        _projectService = projectService;
+        _stakeholderService = stakeholderService;
     }
 
     public IActionResult Index(int id)
     {
-        var selectedProject = _service.GetProjectById(id);
+        var selectedProject = _projectService.GetProject(id);
         return View(selectedProject);
     }
 
     public IActionResult Initiation()
     {
-        return View();
+        var allStakeholders = _stakeholderService.GetStakeholders();
+        return View(allStakeholders);
     }
     public IActionResult Planning()
     {
